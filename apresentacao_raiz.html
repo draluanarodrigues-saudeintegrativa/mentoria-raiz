@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --preto:#16130F;
+  --cobre:#C4763A;
+  --cobre-escuro:#A05E28;
+  --creme:#F0E4CC;
+  --cinza:#8C8880;
+  --bege:#9C7B5E;
+  --offwhite:#FAF7F2;
+}
+body{font-family:'Outfit',sans-serif;background:#1a1713;color:#FAF7F2;overflow:hidden}
+.deck{width:900px;height:580px;position:relative;overflow:hidden;border-radius:4px;box-shadow:0 40px 120px rgba(0,0,0,0.8)}
+.slide{display:none;width:100%;height:100%;position:absolute;top:0;left:0;animation:fadeIn 0.5s ease}
+.slide.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.s1{background:#16130F;flex-direction:column;justify-content:center;align-items:flex-start;padding:70px 80px;position:relative;overflow:hidden}
+.s1::before{content:'';position:absolute;right:-60px;top:-60px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(196,118,58,0.12)}
+.s1::after{content:'';position:absolute;right:-20px;top:-20px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(196,118,58,0.08)}
+.s1 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:28px}
+.s1 h1{font-size:58px;font-weight:800;color:#F0E4CC;line-height:1.08;margin-bottom:24px}
+.s1 h1 span{color:#C4763A}
+.s1 .sub{font-family:'Lora',serif;font-style:italic;font-size:17px;color:#9C7B5E;line-height:1.6;max-width:520px;margin-bottom:40px}
+.s1 .assinatura{font-size:12px;font-weight:500;letter-spacing:1.5px;color:#8C8880;text-transform:uppercase}
+.s1 .acento{position:absolute;bottom:0;left:0;width:100%;height:3px;background:#C4763A}
+
+.s2{background:#FAF7F2;flex-direction:column;justify-content:center;padding:60px 80px;position:relative}
+.s2 .barra{position:absolute;left:0;top:0;bottom:0;width:4px;background:#C4763A}
+.s2 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:32px}
+.s2 h2{font-size:38px;font-weight:800;color:#16130F;line-height:1.15;margin-bottom:30px;max-width:640px}
+.s2 .frases{display:flex;flex-direction:column;gap:16px}
+.s2 .frase{padding:16px 20px;border-left:2px solid #C4763A;background:#fff8f1}
+.s2 .frase p{font-family:'Lora',serif;font-style:italic;font-size:15px;color:#3a3028;line-height:1.7}
+
+.s3{background:#16130F;flex-direction:column;justify-content:center;padding:60px 80px;position:relative}
+.s3 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:28px}
+.s3 h2{font-size:36px;font-weight:800;color:#F0E4CC;line-height:1.2;margin-bottom:36px;max-width:620px}
+.s3 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.s3 .item{padding:18px 20px;border:1px solid rgba(196,118,58,0.25);border-radius:4px}
+.s3 .item .num{font-size:11px;font-weight:600;color:#C4763A;letter-spacing:2px;margin-bottom:8px}
+.s3 .item p{font-family:'Lora',serif;font-size:14px;color:#F0E4CC;line-height:1.6}
+
+.s4{background:#FAF7F2;flex-direction:column;justify-content:center;padding:50px 80px;position:relative}
+.s4 .barra{position:absolute;left:0;top:0;bottom:0;width:4px;background:#C4763A}
+.s4 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:24px}
+.s4 h2{font-size:32px;font-weight:800;color:#16130F;margin-bottom:30px}
+.s4 .pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.s4 .pilar{padding:20px 16px;background:#16130F;border-radius:4px;position:relative;overflow:hidden}
+.s4 .pilar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#C4763A}
+.s4 .pilar .letra{font-size:42px;font-weight:800;color:#C4763A;line-height:1;margin-bottom:8px}
+.s4 .pilar h3{font-size:12px;font-weight:600;color:#F0E4CC;letter-spacing:0.5px;margin-bottom:8px;text-transform:uppercase}
+.s4 .pilar p{font-family:'Lora',serif;font-size:12px;color:#9C7B5E;line-height:1.5}
+.s4 .tagline{margin-top:24px;font-family:'Lora',serif;font-style:italic;font-size:15px;color:#9C7B5E;border-left:3px solid #C4763A;padding-left:20px;line-height:1.6}
+
+.s5{background:#16130F;flex-direction:column;justify-content:center;padding:50px 80px}
+.s5 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:24px}
+.s5 h2{font-size:30px;font-weight:800;color:#F0E4CC;margin-bottom:28px;line-height:1.25}
+.s5 .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.s5 .col-titulo{font-size:10px;font-weight:600;letter-spacing:2px;color:#C4763A;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(196,118,58,0.3)}
+.s5 .item-e{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.s5 .dot{width:6px;height:6px;background:#C4763A;border-radius:50%;margin-top:7px;flex-shrink:0}
+.s5 .item-e p{font-family:'Lora',serif;font-size:13px;color:#F0E4CC;line-height:1.55}
+.s5 .item-e span{font-size:11px;color:#9C7B5E;display:block;margin-top:2px}
+
+.s6{background:#FAF7F2;flex-direction:column;justify-content:center;padding:60px 80px;position:relative}
+.s6 .barra{position:absolute;left:0;top:0;bottom:0;width:4px;background:#C4763A}
+.s6 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:28px}
+.s6 h2{font-size:30px;font-weight:800;color:#16130F;margin-bottom:30px;max-width:600px;line-height:1.25}
+.s6 .antes-depois{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.s6 .col h3{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid}
+.s6 .col.antes h3{color:#8C8880;border-color:#ddd5c8}
+.s6 .col.depois h3{color:#C4763A;border-color:#C4763A}
+.s6 .col li{font-family:'Lora',serif;font-size:13px;line-height:1.6;margin-bottom:8px;list-style:none;display:flex;align-items:flex-start;gap:8px}
+.s6 .col.antes li{color:#8C8880}
+.s6 .col.depois li{color:#3a3028}
+.s6 .marca{font-size:12px;color:#8C8880;flex-shrink:0;margin-top:3px}
+.s6 .marca.ok{color:#C4763A}
+
+.s7{background:#16130F;flex-direction:column;justify-content:center;align-items:center;padding:60px 80px;text-align:center;position:relative;overflow:hidden}
+.s7::before{content:'R.A.I.Z';position:absolute;font-size:200px;font-weight:800;color:rgba(196,118,58,0.04);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.s7 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#C4763A;text-transform:uppercase;margin-bottom:24px}
+.s7 h2{font-size:30px;font-weight:800;color:#F0E4CC;margin-bottom:20px;line-height:1.25}
+.s7 .preco{font-size:72px;font-weight:800;color:#C4763A;line-height:1;margin-bottom:8px}
+.s7 .preco-sub{font-size:14px;color:#9C7B5E;margin-bottom:32px}
+.s7 .items{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.s7 .tag{padding:8px 18px;border:1px solid rgba(196,118,58,0.35);border-radius:40px;font-size:12px;color:#F0E4CC}
+.s7 .exclusivo{font-family:'Lora',serif;font-style:italic;font-size:15px;color:#9C7B5E;max-width:480px;line-height:1.7}
+
+.s8{background:#C4763A;flex-direction:column;justify-content:center;align-items:flex-start;padding:70px 80px;position:relative;overflow:hidden}
+.s8::before{content:'';position:absolute;right:-80px;bottom:-80px;width:400px;height:400px;border-radius:50%;border:2px solid rgba(22,19,15,0.12)}
+.s8::after{content:'';position:absolute;right:-40px;bottom:-40px;width:260px;height:260px;border-radius:50%;border:2px solid rgba(22,19,15,0.08)}
+.s8 .label{font-size:10px;font-weight:500;letter-spacing:3px;color:#16130F;text-transform:uppercase;margin-bottom:28px;opacity:0.7}
+.s8 h2{font-size:46px;font-weight:800;color:#16130F;line-height:1.1;margin-bottom:24px;max-width:600px}
+.s8 .frase{font-family:'Lora',serif;font-style:italic;font-size:17px;color:#16130F;opacity:0.75;margin-bottom:44px;max-width:520px;line-height:1.6}
+.s8 .cta{display:inline-block;background:#16130F;color:#F0E4CC;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:18px 36px;border-radius:4px;cursor:pointer;border:none}
+.s8 .acento{position:absolute;bottom:0;left:0;width:100%;height:3px;background:#16130F;opacity:0.2}
+
+.nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100}
+.nav button{background:none;border:none;cursor:pointer;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:4px;transition:all 0.2s}
+.nav .prev{color:#8C8880;border:1px solid rgba(140,136,128,0.3)}
+.nav .prev:hover{color:#F0E4CC;border-color:rgba(240,228,204,0.4)}
+.nav .next{background:#C4763A;color:#F0E4CC;border:none}
+.nav .next:hover{background:#A05E28}
+.dots{display:flex;gap:6px}
+.dot-nav{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.3s;cursor:pointer}
+.dot-nav.active{background:#C4763A;width:20px;border-radius:3px}
+.slide-count{position:absolute;top:24px;right:32px;font-size:11px;color:#8C8880;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<div class="slide s1 active">
+  <div class="label">Programa de Acompanhamento Exclusivo</div>
+  <h1>Mentoria<br><span>R.A.I.Z</span></h1>
+  <div class="sub">Não é mais um programa de saúde. É a primeira vez que alguém vai ler o seu sistema inteiro e reorganizar a base que sustenta tudo que você é.</div>
+  <div class="assinatura">Dra. Luana Rodrigues &nbsp; Saúde Integrativa e Neuroperformance</div>
+  <div class="acento"></div>
+</div>
+
+<div class="slide s2">
+  <div class="barra"></div>
+  <div class="label">O que trouxe você até aqui</div>
+  <h2>Você sustenta tudo.<br>Menos você mesma.</h2>
+  <div class="frases">
+    <div class="frase"><p>"Meus exames estão normais. Mas eu não estou bem. E já não sei como explicar isso para ninguém."</p></div>
+    <div class="frase"><p>"Já tentei de tudo. Dieta, treino, suplemento, terapia. Nada conectou o sistema inteiro. Parece que estou sempre recomeçando do zero."</p></div>
+    <div class="frase"><p>"Tenho energia para tudo que é dos outros. Nenhuma para mim. E nem me lembro mais de quando isso mudou."</p></div>
+  </div>
+</div>
+
+<div class="slide s3">
+  <div class="label">O que está acontecendo de verdade</div>
+  <h2>Isso não é fraqueza.<br>É o sistema em modo sobrevivência.</h2>
+  <div class="grid">
+    <div class="item">
+      <div class="num">01 &nbsp; Sistema nervoso</div>
+      <p>Seu corpo aprendeu a funcionar em alerta crônico. Qualquer pausa parece perigosa. Não é falta de disciplina, é fisiologia.</p>
+    </div>
+    <div class="item">
+      <div class="num">02 &nbsp; Identidade apagada</div>
+      <p>Você virou função. Mãe, líder, filha, sócia. A mulher foi engolida pela agenda. E nem dói mais, o que assusta.</p>
+    </div>
+    <div class="item">
+      <div class="num">03 &nbsp; Rotina impossível</div>
+      <p>Nenhuma estratégia de internet cabe na sua vida real. Você não precisa de mais uma dica. Precisa de método.</p>
+    </div>
+    <div class="item">
+      <div class="num">04 &nbsp; Raiz não tratada</div>
+      <p>Sintomas reais, exames normais. Porque ninguém ainda leu o seu sistema inteiro, só os fragmentos que couberam na consulta.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide s4">
+  <div class="barra"></div>
+  <div class="label">O método</div>
+  <h2>Quatro meses. Quatro pilares. Uma reorganização real.</h2>
+  <div class="pilares">
+    <div class="pilar">
+      <div class="letra">R</div>
+      <h3>Rastrear</h3>
+      <p>Leitura do sistema inteiro antes de qualquer intervenção.</p>
+    </div>
+    <div class="pilar">
+      <div class="letra">A</div>
+      <h3>Autorregular</h3>
+      <p>Sistema nervoso, sono, intestino e estresse. A base que sustenta tudo.</p>
+    </div>
+    <div class="pilar">
+      <div class="letra">I</div>
+      <h3>Integrar</h3>
+      <p>Protocolo possível para a vida real que você tem.</p>
+    </div>
+    <div class="pilar">
+      <div class="letra">Z</div>
+      <h3>Zelar</h3>
+      <p>Autonomia e identidade nova. Sem depender de força de vontade.</p>
+    </div>
+  </div>
+  <div class="tagline">"O objetivo não é começar forte. É não se perder de novo."</div>
+</div>
+
+<div class="slide s5">
+  <div class="label">O que você recebe</div>
+  <h2>Cada entrega foi construída para<br>eliminar um ponto de colapso.</h2>
+  <div class="cols">
+    <div>
+      <div class="col-titulo">Estrutura do programa</div>
+      <div class="item-e"><div class="dot"></div><div><p>4 encontros individuais de imersão profunda</p><span>Leitura completa do seu sistema e mapa de prioridades personalizado</span></div></div>
+      <div class="item-e"><div class="dot"></div><div><p>Encontros semanais em grupo</p><span>Segunda às 21h ou quarta às 8h, alternados ao longo dos 4 meses</span></div></div>
+      <div class="item-e"><div class="dot"></div><div><p>Protocolo individual escrito</p><span>Alimentação, sono, movimento, sistema nervoso e suplementação desenhados para você</span></div></div>
+      <div class="item-e"><div class="dot"></div><div><p>Suporte contínuo no período</p><span>Você não fica sozinha no meio do processo</span></div></div>
+    </div>
+    <div>
+      <div class="col-titulo">Biblioteca de Reprogramação R.A.I.Z</div>
+      <div class="item-e"><div class="dot"></div><div><p>8 áudios de reprogramação exclusivos</p><span>Regulação, padrões, identidade e sustentação curados para cada fase</span></div></div>
+      <div class="item-e"><div class="dot"></div><div><p>Módulo de autorregulação do sistema nervoso</p><span>Técnicas aplicáveis em 5 a 15 minutos dentro da sua rotina</span></div></div>
+      <div class="item-e"><div class="dot"></div><div><p>Guia de leitura do próprio corpo</p><span>Você aprende a identificar quando o sistema sai de regulação antes do colapso</span></div></div>
+      <div class="item-e"><div class="dot"></div><div><p>Comunidade selecionada de mulheres</p><span>Ambiente exclusivo com mulheres que entendem o que você vive sem precisar explicar</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide s6">
+  <div class="barra"></div>
+  <div class="label">O que muda de verdade</div>
+  <h2>Em quatro meses você para de funcionar por força e começa a funcionar por base.</h2>
+  <div class="antes-depois">
+    <div class="col antes">
+      <h3>Onde você está hoje</h3>
+      <li><span class="marca">×</span>Acorda cansada mesmo dormindo</li>
+      <li><span class="marca">×</span>Vive no limite sem saber onde está o buraco</li>
+      <li><span class="marca">×</span>Tenta recomeçar sozinha e volta à estaca zero</li>
+      <li><span class="marca">×</span>Não reconhece mais o próprio corpo</li>
+      <li><span class="marca">×</span>Sente que está desaparecendo por dentro</li>
+      <li><span class="marca">×</span>Tem tudo. Menos energia para viver o que construiu.</li>
+    </div>
+    <div class="col depois">
+      <h3>Onde você chega</h3>
+      <li><span class="marca ok">✓</span>Sabe ler o próprio sistema antes do colapso</li>
+      <li><span class="marca ok">✓</span>Dorme, recupera e acorda funcional de verdade</li>
+      <li><span class="marca ok">✓</span>Tem protocolo que cabe na sua vida real</li>
+      <li><span class="marca ok">✓</span>Reconecta com quem você é fora das funções</li>
+      <li><span class="marca ok">✓</span>Para de depender de força de vontade</li>
+      <li><span class="marca ok">✓</span>Tem saúde como patrimônio, não como projeto eterno</li>
+    </div>
+  </div>
+</div>
+
+<div class="slide s7">
+  <div class="label">Investimento exclusivo</div>
+  <h2>Quatro meses de reorganização profunda<br>com acompanhamento individual e coletivo</h2>
+  <div class="preco">R$ 6.000</div>
+  <div class="preco-sub">Parcelamento disponível &nbsp; Condição especial via Pix</div>
+  <div class="items">
+    <div class="tag">4 meses de programa</div>
+    <div class="tag">Individual e grupo</div>
+    <div class="tag">Protocolo personalizado</div>
+    <div class="tag">Biblioteca exclusiva</div>
+    <div class="tag">Vagas limitadas</div>
+  </div>
+  <div class="exclusivo">"Uma mulher que gere empresa, família e equipe com excelência. Quanto custa um colapso para ela? Esse é o real investimento. O R.A.I.Z é a alternativa."</div>
+</div>
+
+<div class="slide s8">
+  <div class="label">O próximo passo é seu</div>
+  <h2>Você já sabe o que está acontecendo. O que falta é a saída certa.</h2>
+  <div class="frase">Não existe momento perfeito para cuidar de você. Existe a decisão de parar de adiar o que sustenta tudo o mais.</div>
+  <button class="cta">Quero iniciar meu Diagnóstico R.A.I.Z</button>
+  <div class="acento"></div>
+</div>
+
+<div class="slide-count" id="counter">1 / 8</div>
+<div class="nav">
+  <button class="prev" onclick="changeSlide(-1)">← Anterior</button>
+  <div class="dots" id="dots"></div>
+  <button class="next" onclick="changeSlide(1)">Próximo →</button>
+</div>
+
+</div>
+<script>
+let current=0;
+const slides=document.querySelectorAll('.slide');
+const total=slides.length;
+const counter=document.getElementById('counter');
+const dotsContainer=document.getElementById('dots');
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot-nav'+(i===0?' active':'');
+  d.onclick=()=>goTo(i);
+  dotsContainer.appendChild(d);
+});
+function goTo(n){
+  slides[current].classList.remove('active');
+  document.querySelectorAll('.dot-nav')[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  document.querySelectorAll('.dot-nav')[current].classList.add('active');
+  counter.textContent=(current+1)+' / '+total;
+}
+function changeSlide(dir){
+  const next=Math.max(0,Math.min(total-1,current+dir));
+  goTo(next);
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight')changeSlide(1);
+  if(e.key==='ArrowLeft')changeSlide(-1);
+});
+goTo(0);
+</script>
+</body>
+</html>
